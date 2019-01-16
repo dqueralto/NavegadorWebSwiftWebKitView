@@ -15,6 +15,7 @@
 		7F95356221EEC13100DA5B2A /* NavegadorSwiftWebKitViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F95356121EEC13100DA5B2A /* NavegadorSwiftWebKitViewUITests.swift */; };
 		7F95357021EEC23E00DA5B2A /* SegundoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F95356F21EEC23E00DA5B2A /* SegundoViewController.swift */; };
 		7F95357321EEC54400DA5B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F95357121EEC54400DA5B2A /* Main.storyboard */; };
+		7F95357621EF450700DA5B2A /* historial.s3db in Resources */ = {isa = PBXBuildFile; fileRef = 7F95357521EF450700DA5B2A /* historial.s3db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7F95356321EEC13100DA5B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F95356F21EEC23E00DA5B2A /* SegundoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegundoViewController.swift; sourceTree = "<group>"; };
 		7F95357221EEC54400DA5B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7F95357521EF450700DA5B2A /* historial.s3db */ = {isa = PBXFileReference; lastKnownFileType = file; path = historial.s3db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				7F95355521EEC13100DA5B2A /* NavegadorSwiftWebKitViewTests */,
 				7F95356021EEC13100DA5B2A /* NavegadorSwiftWebKitViewUITests */,
 				7F95353F21EEC13000DA5B2A /* Products */,
+				7F95357421EF450700DA5B2A /* DB */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +129,14 @@
 				7F95356321EEC13100DA5B2A /* Info.plist */,
 			);
 			path = NavegadorSwiftWebKitViewUITests;
+			sourceTree = "<group>";
+		};
+		7F95357421EF450700DA5B2A /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				7F95357521EF450700DA5B2A /* historial.s3db */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 				7F95357321EEC54400DA5B2A /* Main.storyboard in Resources */,
 				7F95354C21EEC13100DA5B2A /* LaunchScreen.storyboard in Resources */,
 				7F95354921EEC13100DA5B2A /* Assets.xcassets in Resources */,
+				7F95357621EF450700DA5B2A /* historial.s3db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
