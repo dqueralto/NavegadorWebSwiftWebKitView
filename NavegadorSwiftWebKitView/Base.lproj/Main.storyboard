@@ -33,11 +33,23 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSd-oW-TgB">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem tag="1" systemItem="rewind" id="xnG-st-jND"/>
+                                    <barButtonItem tag="1" systemItem="rewind" id="xnG-st-jND">
+                                        <connections>
+                                            <action selector="atras:" destination="BYZ-38-t0r" id="Pgf-R8-On0"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zi9-OM-YPb"/>
-                                    <barButtonItem tag="2" systemItem="refresh" id="awt-dF-QWP"/>
+                                    <barButtonItem tag="2" systemItem="refresh" id="awt-dF-QWP">
+                                        <connections>
+                                            <action selector="recargar:" destination="BYZ-38-t0r" id="e86-TT-An2"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="PSv-mK-dfM"/>
-                                    <barButtonItem tag="3" systemItem="fastForward" id="69k-mZ-lun"/>
+                                    <barButtonItem tag="3" systemItem="fastForward" id="69k-mZ-lun">
+                                        <connections>
+                                            <action selector="siguiente:" destination="BYZ-38-t0r" id="Wy8-vw-hih"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Njf-0w-llq"/>
                                     <barButtonItem systemItem="bookmarks" id="VyM-dK-pge">
                                         <connections>
@@ -49,19 +61,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="CuA-We-iNz"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="OWA-Lx-jcB"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="SVk-RR-MJX"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="ggC-7E-cNO"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="nCT-Xo-a33"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="top" secondItem="1pp-6t-9fc" secondAttribute="top" constant="7" id="oJU-dn-a9W"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="r4e-Rp-WOj"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="top" secondItem="KCu-Sc-UAm" secondAttribute="bottom" id="rlc-Jj-8M0"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="4m5-3h-8V5" secondAttribute="bottom" id="u8y-kU-aP5"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="bottom" secondItem="1pp-6t-9fc" secondAttribute="bottom" id="wnU-BE-AJv"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="65d-sp-MUa"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="bottom" secondItem="1pp-6t-9fc" secondAttribute="bottom" id="8Qk-dN-w2K"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="top" secondItem="1pp-6t-9fc" secondAttribute="top" constant="7" id="ASX-OP-N4y"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="4m5-3h-8V5" secondAttribute="bottom" id="I3v-y1-Iuz"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="PaV-fh-X9w"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="top" secondItem="KCu-Sc-UAm" secondAttribute="bottom" id="bAc-yQ-gCh"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="ca4-dt-50q"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="fnX-0J-Bxs"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="oCe-qW-xXq"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="xLK-NS-INl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1pp-6t-9fc"/>
                     </view>
+                    <connections>
+                        <outlet property="barraDeBusqueda" destination="KCu-Sc-UAm" id="IUp-DS-I0J"/>
+                        <outlet property="webKitView" destination="4m5-3h-8V5" id="M9q-cs-7xi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,7 +86,7 @@
         <!--Segundo View Controller-->
         <scene sceneID="t9T-O7-gxg">
             <objects>
-                <viewController id="oJG-h6-a1d" customClass="SegundoViewController" customModule="Navegador2DAMSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oJG-h6-a1d" customClass="SegundoViewController" customModule="NavegadorSwiftWebKitView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZWB-Bq-jvy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +97,7 @@
                                 <items>
                                     <barButtonItem systemItem="reply" id="C7y-FO-xJD">
                                         <connections>
-                                            <action selector="salir:" destination="oJG-h6-a1d" id="Xgl-Et-PlX"/>
+                                            <action selector="salir:" destination="oJG-h6-a1d" id="Jcf-vF-qOS"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
