@@ -100,8 +100,8 @@
 				7F95355521EEC13100DA5B2A /* NavegadorSwiftWebKitViewTests */,
 				7F95356021EEC13100DA5B2A /* NavegadorSwiftWebKitViewUITests */,
 				7F95353F21EEC13000DA5B2A /* Products */,
-				7F95357421EF450700DA5B2A /* DB */,
 				7F95358F21EF525100DA5B2A /* Frameworks */,
+				7F95357421EF450700DA5B2A /* DB */,
 			);
 			sourceTree = "<group>";
 		};

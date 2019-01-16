@@ -52,6 +52,11 @@ class ViewController: UIViewController, WKUIDelegate {
         
         if let url = URL(string: barraDeBusqueda.text!)
         {
+            
+            //let myURL = URL(string: barraDeBusqueda.text!)
+            //let myRequest = URLRequest(url: myURL!)
+            //webKitView.load(myRequest)
+            
             let myRequest = URLRequest(url: url)
             webKitView.load(myRequest)
         }
@@ -61,9 +66,36 @@ class ViewController: UIViewController, WKUIDelegate {
         }
     }
     
+/*
+    func deshabilitaritems(objeto: Int, estado: Bool )
+    {
+        var items = (navigationController?.toolbar.items)!
+        for item: UIBarButtonItem in items {
+            if item.tag == objeto {
+                item.isEnabled = estado
+            }
+        }
+    }
+*/
     func didStartLoad(_ webKitView: WKWebView)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        if webKitView.canGoBack {
+            //deshabilitaritems(objeto:1, estado: true)
+        }
+        else
+        {
+           //deshabilitaritems(objeto:1, estado: false)
+        }
+        
+        if webKitView.canGoForward
+        {
+            //deshabilitaritems(objeto:3, estado: true)
+        }
+        else
+        {
+            //deshabilitaritems(objeto:3, estado: false)
+        }
     }
 
     func didFinishNavigation(_ webKitView: WKWebView)
@@ -92,6 +124,7 @@ class ViewController: UIViewController, WKUIDelegate {
         let myURL = URL(string:"https://www.google.com")
         let myRequest = URLRequest(url: myURL!)
         webKitView.load(myRequest)
+        //deshabilitaritems(objeto:1, estado: false)
     }
 
 
