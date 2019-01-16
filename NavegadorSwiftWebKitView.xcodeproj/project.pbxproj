@@ -163,8 +163,8 @@
 				7F95358321EF50C800DA5B2A /* iPadProApp.jpg */,
 				7F95358421EF50C800DA5B2A /* AppStore.jpg */,
 				7F95358521EF50C800DA5B2A /* iPadApp.jpg */,
-				7F95358621EF50C800DA5B2A /* illidari.jpg */,
 				7F95358721EF50C800DA5B2A /* iPadApp2.jpg */,
+				7F95358621EF50C800DA5B2A /* illidari.jpg */,
 			);
 			path = img;
 			sourceTree = "<group>";

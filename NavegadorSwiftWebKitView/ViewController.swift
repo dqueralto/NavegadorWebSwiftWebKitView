@@ -61,7 +61,7 @@ class ViewController: UIViewController, WKUIDelegate {
         }
     }
     
-    func DidStartLoad(_ webKitView: WKWebView)
+    func didStartLoad(_ webKitView: WKWebView)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
