@@ -80,7 +80,9 @@ class ViewController: UIViewController, WKUIDelegate {
     func didStartLoad(_ webKitView: WKWebView)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        if webKitView.canGoBack {
+        
+        if webKitView.canGoBack
+        {
             //deshabilitaritems(objeto:1, estado: true)
         }
         else
