@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illidari.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lst-hA-Wyz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Protecor.png" translatesAutoresizingMaskIntoConstraints="NO" id="lst-hA-Wyz">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="illidari.jpg" width="1500" height="1644"/>
+        <image name="Protecor.png" width="1024" height="1024"/>
     </resources>
 </document>

@@ -10,13 +10,34 @@ import UIKit
 import WebKit
 
 
-class ViewController: UIViewController, WKUIDelegate {
-    var webView: WKWebView!
+class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
+    //var webView: WKWebView!
 
     
     @IBOutlet weak var barraDeBusqueda: UISearchBar!
     @IBOutlet weak var webKitView: WKWebView!
+    @IBOutlet weak var retroceder: UIBarButtonItem!
+    @IBOutlet weak var avanzar: UIBarButtonItem!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        let myURL = URL(string:"https://www.google.com")
+        let myRequest = URLRequest(url: myURL!)
+        webKitView.load(myRequest)
+        print(barraDeBusqueda.text!)
+        
+        //barraDeBusqueda.delegate = self
+        //webKitView.navigationDelegate = self
+        
+        retroceder.isEnabled = false
+        avanzar.isEnabled = false
+        
+        //deshabilitaritems(objeto:1, estado: false)
+    }
+    
+    //---------------------------------------------------------------------------------------------------------------
     @IBAction func atras(_ sender: Any)
     {
         if webKitView.canGoBack
@@ -37,35 +58,91 @@ class ViewController: UIViewController, WKUIDelegate {
             webKitView.goForward()
         }
     }
+
+    //---------------------------------------------------------------------------------------------------------------
+
+    /*
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear( animated )
+        
+        let urlString:String = "https://www.google.com"
+        let url:URL = URL(string: urlString)!
+        let urlRequest:URLRequest = URLRequest(url: url)
+        webKitView.load(urlRequest)
+        
+        barraDeBusqueda.text = urlString
+    }
+
     
-    /*override func loadView()//Navegador a pantalla completa
-     {
-        let webConfiguration = WKWebViewConfiguration()
-        webKitView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webKitView.uiDelegate = self
-        view = webKitView
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    func textFieldShouldReturn(_ searchBar: UISearchBar) -> Bool {
+        let urlString:String = barraDeBusqueda.text!
+        let url:URL = URL(string: urlString)!
+        let urlRequest:URLRequest = URLRequest(url: url)
+        webKitView.load(urlRequest)
+        
+        searchBar.resignFirstResponder()
+        
+        return true
+
+    
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        retroceder.isEnabled = webView.canGoBack
+        avanzar.isEnabled = webView.canGoForward
+        
+        barraDeBusqueda.text = webView.url?.absoluteString
     }*/
+
+    private func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+        {
+            //barraDeBusqueda.resignFirstResponder()
+            
+           // if (!barraDeBusqueda.text!.contains("https://www."))
+            //{
+              //  barraDeBusqueda.text="https://www."+barraDeBusqueda.text!
+            //}
+            let url = URL(string: barraDeBusqueda.text!)
+            let request = URLRequest(url: url!)
+            webKitView.load(request)
+            
+        }
     
+    
+    
+    
+    
+    
+    
+    
+    
+
+    /*
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         barraDeBusqueda.resignFirstResponder()
-        
+
         if let url = URL(string: barraDeBusqueda.text!)
         {
-            
             //let myURL = URL(string: barraDeBusqueda.text!)
             //let myRequest = URLRequest(url: myURL!)
             //webKitView.load(myRequest)
             
-            let myRequest = URLRequest(url: url)
-            webKitView.load(myRequest)
+            //let myRequest = URLRequest(url: url)
+            //webKitView.load(myRequest)
+
         }
         else
         {
             print("ERROR")
         }
     }
-    
+    */
 /*
     func deshabilitaritems(objeto: Int, estado: Bool )
     {
@@ -77,6 +154,8 @@ class ViewController: UIViewController, WKUIDelegate {
         }
     }
 */
+
+   /*
     func didStartLoad(_ webKitView: WKWebView)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -100,35 +179,20 @@ class ViewController: UIViewController, WKUIDelegate {
         }
     }
 
-    func didFinishNavigation(_ webKitView: WKWebView)
-    {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
 
     
-
-    /*
-    func webViewDidStartLoad(_ webView: UIWebView)
-    {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView)
-    {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    func webView(_ webKitView: WKWebView, didFinish navigation: WKNavigation!) {
+        retroceder.isEnabled = webKitView.canGoBack
+        avanzar.isEnabled = webKitView.canGoForward
+        
+        barraDeBusqueda.text = webKitView.url?.absoluteString
     }
     */
+
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let myURL = URL(string:"https://www.google.com")
-        let myRequest = URLRequest(url: myURL!)
-        webKitView.load(myRequest)
-        //deshabilitaritems(objeto:1, estado: false)
+
+
+
     }
-
-
-}
+    
 

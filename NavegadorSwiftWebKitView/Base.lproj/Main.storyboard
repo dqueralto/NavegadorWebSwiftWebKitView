@@ -21,6 +21,9 @@
                             <searchBar contentMode="redraw" text="https://developer.apple.com" translatesAutoresizingMaskIntoConstraints="NO" id="KCu-Sc-UAm" userLabel="BarraDeBusqueda">
                                 <rect key="frame" x="0.0" y="51" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="264-fx-nxd"/>
+                                </connections>
                             </searchBar>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m5-3h-8V5">
                                 <rect key="frame" x="0.0" y="107" width="414" height="706"/>
@@ -75,7 +78,9 @@
                         <viewLayoutGuide key="safeArea" id="1pp-6t-9fc"/>
                     </view>
                     <connections>
+                        <outlet property="avanzar" destination="69k-mZ-lun" id="Tbl-G7-2M8"/>
                         <outlet property="barraDeBusqueda" destination="KCu-Sc-UAm" id="IUp-DS-I0J"/>
+                        <outlet property="retroceder" destination="xnG-st-jND" id="SFP-CB-NSD"/>
                         <outlet property="webKitView" destination="4m5-3h-8V5" id="M9q-cs-7xi"/>
                     </connections>
                 </viewController>

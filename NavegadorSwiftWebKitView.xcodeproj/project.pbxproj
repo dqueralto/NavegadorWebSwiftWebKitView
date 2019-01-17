@@ -16,13 +16,14 @@
 		7F95357021EEC23E00DA5B2A /* SegundoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F95356F21EEC23E00DA5B2A /* SegundoViewController.swift */; };
 		7F95357321EEC54400DA5B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F95357121EEC54400DA5B2A /* Main.storyboard */; };
 		7F95357621EF450700DA5B2A /* historial.s3db in Resources */ = {isa = PBXBuildFile; fileRef = 7F95357521EF450700DA5B2A /* historial.s3db */; };
-		7F95358821EF50C800DA5B2A /* iPhoneApp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358121EF50C800DA5B2A /* iPhoneApp.jpg */; };
-		7F95358921EF50C800DA5B2A /* iPhoneApp2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358221EF50C800DA5B2A /* iPhoneApp2.jpg */; };
-		7F95358A21EF50C800DA5B2A /* iPadProApp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358321EF50C800DA5B2A /* iPadProApp.jpg */; };
-		7F95358B21EF50C800DA5B2A /* AppStore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358421EF50C800DA5B2A /* AppStore.jpg */; };
-		7F95358C21EF50C800DA5B2A /* iPadApp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358521EF50C800DA5B2A /* iPadApp.jpg */; };
-		7F95358D21EF50C800DA5B2A /* illidari.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358621EF50C800DA5B2A /* illidari.jpg */; };
-		7F95358E21EF50C800DA5B2A /* iPadApp2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F95358721EF50C800DA5B2A /* iPadApp2.jpg */; };
+		7FF3881E21F0E24A00472A3C /* TiPineApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881621F0E24900472A3C /* TiPineApp.png */; };
+		7FF3881F21F0E24A00472A3C /* Tales.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881721F0E24900472A3C /* Tales.png */; };
+		7FF3882021F0E24A00472A3C /* TAppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881821F0E24A00472A3C /* TAppStore.png */; };
+		7FF3882121F0E24A00472A3C /* Protecor.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881921F0E24A00472A3C /* Protecor.png */; };
+		7FF3882221F0E24A00472A3C /* TiPadApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881A21F0E24A00472A3C /* TiPadApp.png */; };
+		7FF3882321F0E24A00472A3C /* TiPadProApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881B21F0E24A00472A3C /* TiPadProApp.png */; };
+		7FF3882421F0E24A00472A3C /* TiPadApp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881C21F0E24A00472A3C /* TiPadApp2.png */; };
+		7FF3882521F0E24A00472A3C /* TiPineApp2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF3881D21F0E24A00472A3C /* TiPineApp2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +59,14 @@
 		7F95356F21EEC23E00DA5B2A /* SegundoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegundoViewController.swift; sourceTree = "<group>"; };
 		7F95357221EEC54400DA5B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F95357521EF450700DA5B2A /* historial.s3db */ = {isa = PBXFileReference; lastKnownFileType = file; path = historial.s3db; sourceTree = "<group>"; };
-		7F95358121EF50C800DA5B2A /* iPhoneApp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhoneApp.jpg; sourceTree = "<group>"; };
-		7F95358221EF50C800DA5B2A /* iPhoneApp2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhoneApp2.jpg; sourceTree = "<group>"; };
-		7F95358321EF50C800DA5B2A /* iPadProApp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPadProApp.jpg; sourceTree = "<group>"; };
-		7F95358421EF50C800DA5B2A /* AppStore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = AppStore.jpg; sourceTree = "<group>"; };
-		7F95358521EF50C800DA5B2A /* iPadApp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPadApp.jpg; sourceTree = "<group>"; };
-		7F95358621EF50C800DA5B2A /* illidari.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = illidari.jpg; sourceTree = "<group>"; };
-		7F95358721EF50C800DA5B2A /* iPadApp2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPadApp2.jpg; sourceTree = "<group>"; };
+		7FF3881621F0E24900472A3C /* TiPineApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPineApp.png; sourceTree = "<group>"; };
+		7FF3881721F0E24900472A3C /* Tales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tales.png; sourceTree = "<group>"; };
+		7FF3881821F0E24A00472A3C /* TAppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TAppStore.png; sourceTree = "<group>"; };
+		7FF3881921F0E24A00472A3C /* Protecor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Protecor.png; sourceTree = "<group>"; };
+		7FF3881A21F0E24A00472A3C /* TiPadApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadApp.png; sourceTree = "<group>"; };
+		7FF3881B21F0E24A00472A3C /* TiPadProApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadProApp.png; sourceTree = "<group>"; };
+		7FF3881C21F0E24A00472A3C /* TiPadApp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPadApp2.png; sourceTree = "<group>"; };
+		7FF3881D21F0E24A00472A3C /* TiPineApp2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiPineApp2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,13 +160,14 @@
 		7F95358021EF50C800DA5B2A /* img */ = {
 			isa = PBXGroup;
 			children = (
-				7F95358121EF50C800DA5B2A /* iPhoneApp.jpg */,
-				7F95358221EF50C800DA5B2A /* iPhoneApp2.jpg */,
-				7F95358321EF50C800DA5B2A /* iPadProApp.jpg */,
-				7F95358421EF50C800DA5B2A /* AppStore.jpg */,
-				7F95358521EF50C800DA5B2A /* iPadApp.jpg */,
-				7F95358721EF50C800DA5B2A /* iPadApp2.jpg */,
-				7F95358621EF50C800DA5B2A /* illidari.jpg */,
+				7FF3881721F0E24900472A3C /* Tales.png */,
+				7FF3881921F0E24A00472A3C /* Protecor.png */,
+				7FF3881821F0E24A00472A3C /* TAppStore.png */,
+				7FF3881A21F0E24A00472A3C /* TiPadApp.png */,
+				7FF3881C21F0E24A00472A3C /* TiPadApp2.png */,
+				7FF3881B21F0E24A00472A3C /* TiPadProApp.png */,
+				7FF3881621F0E24900472A3C /* TiPineApp.png */,
+				7FF3881D21F0E24A00472A3C /* TiPineApp2.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -281,16 +284,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F95357321EEC54400DA5B2A /* Main.storyboard in Resources */,
-				7F95358B21EF50C800DA5B2A /* AppStore.jpg in Resources */,
-				7F95358921EF50C800DA5B2A /* iPhoneApp2.jpg in Resources */,
-				7F95358D21EF50C800DA5B2A /* illidari.jpg in Resources */,
-				7F95358E21EF50C800DA5B2A /* iPadApp2.jpg in Resources */,
-				7F95358821EF50C800DA5B2A /* iPhoneApp.jpg in Resources */,
+				7FF3882221F0E24A00472A3C /* TiPadApp.png in Resources */,
+				7FF3882321F0E24A00472A3C /* TiPadProApp.png in Resources */,
+				7FF3882121F0E24A00472A3C /* Protecor.png in Resources */,
+				7FF3882421F0E24A00472A3C /* TiPadApp2.png in Resources */,
+				7FF3882021F0E24A00472A3C /* TAppStore.png in Resources */,
+				7FF3881E21F0E24A00472A3C /* TiPineApp.png in Resources */,
 				7F95354C21EEC13100DA5B2A /* LaunchScreen.storyboard in Resources */,
 				7F95354921EEC13100DA5B2A /* Assets.xcassets in Resources */,
 				7F95357621EF450700DA5B2A /* historial.s3db in Resources */,
-				7F95358C21EF50C800DA5B2A /* iPadApp.jpg in Resources */,
-				7F95358A21EF50C800DA5B2A /* iPadProApp.jpg in Resources */,
+				7FF3881F21F0E24A00472A3C /* Tales.png in Resources */,
+				7FF3882521F0E24A00472A3C /* TiPineApp2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

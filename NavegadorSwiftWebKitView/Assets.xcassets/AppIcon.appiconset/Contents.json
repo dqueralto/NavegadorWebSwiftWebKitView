@@ -33,13 +33,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "iPhoneApp.jpg",
+      "filename" : "TiPineApp.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "iPhoneApp2.jpg",
+      "filename" : "TiPineApp2.png",
       "scale" : "3x"
     },
     {
@@ -75,25 +75,25 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "iPadApp.jpg",
+      "filename" : "TiPadApp.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "iPadApp2.jpg",
+      "filename" : "TiPadApp2.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "iPadProApp-1.jpg",
+      "filename" : "TiPadProApp.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "AppStore.jpg",
+      "filename" : "TAppStore.png",
       "scale" : "1x"
     }
   ],
