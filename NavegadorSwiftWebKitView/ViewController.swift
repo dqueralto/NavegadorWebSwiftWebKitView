@@ -17,7 +17,7 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
     @IBOutlet weak var webKitView: WKWebView!
     @IBOutlet weak var retroceder: UIBarButtonItem!
     @IBOutlet weak var avanzar: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -59,8 +59,11 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
     }
 
     //---------------------------------------------------------------------------------------------------------------
-
-
+    @IBAction func eliminarHistorial(_ sender: Any) {
+        
+    }
+    
+    
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
