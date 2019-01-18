@@ -96,16 +96,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iQe-XD-Dty">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-0a-kiY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w98-mm-hSD">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdilla" id="uh1-bG-83O">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uh1-bG-83O" id="Xne-KZ-tmH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oJG-h6-a1d" id="1mq-qt-VH5"/>
+                                    <outlet property="delegate" destination="oJG-h6-a1d" id="10G-cG-x3Z"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w98-mm-hSD">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem systemItem="reply" id="C7y-FO-xJD">
                                         <connections>
@@ -123,10 +133,19 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="3lk-5P-Rf4"/>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="76L-4H-Eg1"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="bottom" secondItem="eRv-Zd-LCc" secondAttribute="bottom" id="QCr-gY-mn3"/>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="top" secondItem="eRv-Zd-LCc" secondAttribute="top" id="XMU-cw-w5c"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="top" secondItem="Aru-0a-kiY" secondAttribute="bottom" id="eIY-oF-Fxz"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="tGC-KL-3gf"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="tvv-HS-xGs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eRv-Zd-LCc"/>
                     </view>
                     <connections>
-                        <outlet property="histoTexto" destination="iQe-XD-Dty" id="7DT-0q-Xjx"/>
+                        <outlet property="histoTableView" destination="Aru-0a-kiY" id="3LL-Jt-OQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPd-U4-BFj" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,23 +9,33 @@
 import UIKit
 import SQLite3
 
-class SegundoViewController: UIViewController {
+class SegundoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var db: OpaquePointer?
     var historial = [Histo]()
 
-    @IBOutlet weak var histoTexto: UITextView!
+    @IBOutlet weak var histoTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         conectarDB()
-        //rellenarHistorial()
-        //print(historial)
-        //rellenarHistorial()
-        
+
         // Do any additional setup after loading the view.
     }
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return (historial.count)
+    }
     
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let celda = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "celdilla")
+        for hi in historial{
+            celda.textLabel?.text = hi.url
+        }
+        return (celda)
+    }
+
     
     @IBAction func salir(_ sender: Any)
     {
@@ -81,13 +91,9 @@ class SegundoViewController: UIViewController {
             
             //adding values to list
             historial.append(Histo(id: Int(id), url: String(describing: url)))
-            for h in historial
-            {
-                histoTexto.text = h.url
-            }
+
         }
         
-        rellenarHistorial()
     }
  
     func eliminarHistorial()
@@ -114,37 +120,13 @@ class SegundoViewController: UIViewController {
         
         sqlite3_finalize(deleteStatement)
         
-
-        /*if sqlite3_prepare(db, queryString, -1, &stat, nil) != SQLITE_OK{
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print(queryString)
-            print("error preparing insert: \(errmsg)")
-            return
-        }
-        
-        
-        //executing the query to insert values
-        if sqlite3_step(stat) != SQLITE_DONE {
-            let errmsg = String(cString: sqlite3_errmsg(db)!)
-            print("fallo al insertar en historial: \(errmsg)")
-            return
-        }*/
+        histoTableView.reloadData()
         print(leerValores())
-        histoTexto.text = ""
-        rellenarHistorial()
+        
+
     }
     
     
-    func rellenarHistorial()
-    {
-        for h in historial
-        {
-            histoTexto.text += h.url!
-            histoTexto.text += "\n --------------------------------------------------------"
-            
-        }
-       //histoTexto.text = " \(leerValores() \n )"
-    }
 
     /*
     // MARK: - Navigation
