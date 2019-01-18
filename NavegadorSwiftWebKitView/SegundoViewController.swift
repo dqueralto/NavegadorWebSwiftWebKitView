@@ -13,10 +13,15 @@ class SegundoViewController: UIViewController {
     var db: OpaquePointer?
     var historial = [Histo]()
 
+    @IBOutlet weak var histoTexto: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         conectarDB()
+        //rellenarHistorial()
+        //print(historial)
+        //rellenarHistorial()
         
         // Do any additional setup after loading the view.
     }
@@ -46,13 +51,14 @@ class SegundoViewController: UIViewController {
                 print("error creating table: \(errmsg)")
             }
         }
+        leerValores()
     }
     
     
     func leerValores(){
         
-        //first empty the list of heroes
-        //historial.removeAll()
+        //first empty the list of histo
+        historial.removeAll()
         
         //this is our select query
         let queryString = "SELECT * FROM Historial"
@@ -75,20 +81,70 @@ class SegundoViewController: UIViewController {
             
             //adding values to list
             historial.append(Histo(id: Int(id), url: String(describing: url)))
-            
+            for h in historial
+            {
+                histoTexto.text = h.url
+            }
         }
         
-        
+        rellenarHistorial()
     }
  
     func eliminarHistorial()
     {
+
+        let queryString = "DELETE FROM Historial"
+        var deleteStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare(db, queryString, -1, &deleteStatement, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print(queryString)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        if sqlite3_prepare_v2(db, queryString, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        
+        sqlite3_finalize(deleteStatement)
+        
+
+        /*if sqlite3_prepare(db, queryString, -1, &stat, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print(queryString)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        
+        //executing the query to insert values
+        if sqlite3_step(stat) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("fallo al insertar en historial: \(errmsg)")
+            return
+        }*/
         print(leerValores())
-        historial.removeAll()
-        print(leerValores())
+        histoTexto.text = ""
+        rellenarHistorial()
     }
     
     
+    func rellenarHistorial()
+    {
+        for h in historial
+        {
+            histoTexto.text += h.url!
+            histoTexto.text += "\n --------------------------------------------------------"
+            
+        }
+       //histoTexto.text = " \(leerValores() \n )"
+    }
 
     /*
     // MARK: - Navigation

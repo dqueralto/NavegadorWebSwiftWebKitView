@@ -11,7 +11,7 @@ import WebKit
 import SQLite3
 
 
-class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
+class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate {
     var db: OpaquePointer?
     var historial = [Histo]()
     
@@ -19,28 +19,20 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
     @IBOutlet weak var webKitView: WKWebView!
     @IBOutlet weak var retroceder: UIBarButtonItem!
     @IBOutlet weak var avanzar: UIBarButtonItem!
+    
+    
     //---------------------------------------------------------------------------------------------------------------
     //INICIO
     //---------------------------------------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        barraDeBusqueda.delegate = self
+        webKitView.navigationDelegate = self
         webKitView.load(URLRequest(url: URL(string: "http://www.google.com")!))
-        print(barraDeBusqueda.text!)
-        
-        //barraDeBusqueda.delegate = self
-        //webKitView.navigationDelegate = self
-        
-        //retroceder.isEnabled = false
-        //avanzar.isEnabled = false
-        activarBotones()
-        
-        let str = barraDeBusqueda.text!
-        let index: String.Index = str.index(str.startIndex, offsetBy: 8)
-        let newStr = String(str[..<index])
-        print(newStr)
         crearBD()
     }
+
     //---------------------------------------------------------------------------------------------------------------
     //BUSCADOR
     //---------------------------------------------------------------------------------------------------------------
@@ -67,24 +59,101 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
   
     
     
-
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        let str = barraDeBusqueda.text!
-        let index: String.Index = str.index(str.startIndex, offsetBy: 8)
-        let newStr = String(str[..<index])
+        let barraBusqueda = barraDeBusqueda.text!
         
-        if newStr == String(!barraDeBusqueda.text!.contains("https://"))
-        {
-            barraDeBusqueda.text="https://"+barraDeBusqueda.text!
+        let com: String = ".com"
+        let es: String = ".es"
+        let net: String = ".net"
+        let http: String = "https://"
+        let www: String = "www."
+        let google: String = "https://www.google.com/search?q="
+        
+        var barraBusquedafinal = barraBusqueda.replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
 
+        barraDeBusqueda.resignFirstResponder()
+        barraBusquedafinal = barraBusquedafinal.lowercased()
+        
+        print("0")
+
+        if !barraBusquedafinal.contains(com) && !barraBusquedafinal.contains(es) && !barraBusquedafinal.contains(net)
+        {
+            barraBusquedafinal = google + barraBusquedafinal
+            print(barraBusquedafinal)
+            print("4")
+            
+            if let url = URL(string: barraBusquedafinal)
+            {
+                print("siiiiiiiiii")
+                
+                let myRequest = URLRequest(url: url)
+                webKitView.load(myRequest)
+                
+                
+            }
+            
         }
-        activarBotones()
-        insertar()
-        webKitView.load(URLRequest(url: URL(string: barraDeBusqueda.text!)!))
-        
-        
+        else
+        {
+            print("1")
+            if !barraBusquedafinal.contains(www)
+            {
+                barraBusquedafinal = www + barraBusquedafinal
+                print(barraBusquedafinal)
+                print("2")
+            }
+            if !barraBusquedafinal.contains(http)
+            {
+                barraBusquedafinal = http + barraBusquedafinal
+                print(barraBusquedafinal)
+                print("3")
+                
+            }
+            
+            if let url = URL(string: barraBusquedafinal)
+            {
+                print("siiiiiiiiii")
+                
+                let myRequest = URLRequest(url: url)
+                webKitView.load(myRequest)
+            }
+
+            
+            
+        }
+
     }
+
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!)
+    {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        if webKitView.canGoForward
+        {
+            avanzar.isEnabled = true
+        }
+        else
+        {
+            avanzar.isEnabled = false
+        }
+        if webKitView.canGoBack
+        {
+            retroceder.isEnabled = true
+        }
+        else
+        {
+            retroceder.isEnabled = false
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)
+    {
+        barraDeBusqueda.text = webKitView.url?.absoluteString
+        insertar()
+    }
+    
+    
     //---------------------------------------------------------------------------------------------------------------
     //FUNCIONALIDADES
     //---------------------------------------------------------------------------------------------------------------
@@ -110,12 +179,9 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
     }
     
     
-    @IBAction func eliminar(_ sender: Any)
-    {
-        print(leerValores())
-        eliminarHistorial()
-        print(leerValores())
-    }
+
+    
+
     //---------------------------------------------------------------------------------------------------------------
     //GESTION DE BASE DE DATOS
     //---------------------------------------------------------------------------------------------------------------
@@ -136,8 +202,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
                 print("error creating table: \(errmsg)")
             }
         }
-        insertar()
-        leerValores()
+        //insertar()
+        //leerValores()
         for hi in historial {
             print(hi.url!)
         }
@@ -164,11 +230,11 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
             print("fallo al insertar en historial: \(errmsg)")
             return
         }
-        //  readValues()
+        
         
         //displaying a success message
-        print("Herro saved successfully")
-        print(leerValores())
+        print("Histo saved successfully")
+        //print(leerValores())
     }
     
     func leerValores(){
@@ -203,11 +269,7 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
         
     }
     
-    func eliminarHistorial()
-    {
-        
-        historial.removeAll()
-    }
+
     
         
 }
