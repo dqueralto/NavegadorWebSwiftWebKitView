@@ -27,8 +27,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
         //barraDeBusqueda.delegate = self
         //webKitView.navigationDelegate = self
         
-        retroceder.isEnabled = false
-        avanzar.isEnabled = false
+        //retroceder.isEnabled = false
+        //avanzar.isEnabled = false
         
         let str = barraDeBusqueda.text!
         let index: String.Index = str.index(str.startIndex, offsetBy: 8)
@@ -67,12 +67,10 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-            //barraDeBusqueda.resignFirstResponder()
-
         let str = barraDeBusqueda.text!
         let index: String.Index = str.index(str.startIndex, offsetBy: 8)
-        //var result = str.substring(to: index)
         let newStr = String(str[..<index])
+        
         if newStr == String(!barraDeBusqueda.text!.contains("https://"))
         {
             barraDeBusqueda.text="https://"+barraDeBusqueda.text!
@@ -80,10 +78,6 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate {
         }
         webKitView.load(URLRequest(url: URL(string: barraDeBusqueda.text!)!))
 
-        //let url = URL(string: barraDeBusqueda.text!)
-        //let request = URLRequest(url: url!)
-        //webKitView.load(request)
-        //webKitView.load(URLRequest(url: URL(string: barraDeBusqueda.text!)!))
     }
 
 }
