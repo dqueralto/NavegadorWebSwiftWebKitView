@@ -18,7 +18,6 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
-    public var texto = ""
     
 
     @IBOutlet weak var histoTableView: UITableView!
@@ -56,25 +55,14 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         //CARGAMOS LAS CELDAS
         return celda
     }
-    
+    /*//OBTENER EL CONTENIDO DE LA CELDA SELECCIONADA
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         let celda = self.histoTableView.cellForRow(at: indexPath)
-        texto = (celda?.textLabel?.text)!
-        //self.url.text url.text = String(texto!)
+        let texto = (celda?.textLabel?.text)!
         print(texto)
         print("yeeeeeeeeeeee")
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "conexionHistorial" {
-            let vistaPrincipal = segue.destination as! ViewController
-            vistaPrincipal.barraDeBusqueda.text = texto
-            
-        }
-        
-    }
-
-
+    }*/
 
     
 
