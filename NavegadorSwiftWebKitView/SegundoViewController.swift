@@ -18,7 +18,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
-
+    public var texto = ""
     
 
     @IBOutlet weak var histoTableView: UITableView!
@@ -27,7 +27,6 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         
         conectarDB()
-
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
@@ -58,7 +57,23 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         return celda
     }
     
-    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        let celda = self.histoTableView.cellForRow(at: indexPath)
+        texto = (celda?.textLabel?.text)!
+        //self.url.text url.text = String(texto!)
+        print(texto)
+        print("yeeeeeeeeeeee")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "conexionHistorial" {
+            let vistaPrincipal = segue.destination as! ViewController
+            vistaPrincipal.barraDeBusqueda.text = texto
+            
+        }
+        
+    }
+
 
 
     
@@ -82,6 +97,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         histoTableView.reloadData()
     }
     
+
     //---------------------------------------------------------------------------------------------------------------
     //BASE DE DATOS
     //---------------------------------------------------------------------------------------------------------------
@@ -166,16 +182,6 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
 
     }
     
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

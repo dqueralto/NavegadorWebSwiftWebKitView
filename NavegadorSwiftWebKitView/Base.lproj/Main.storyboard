@@ -56,7 +56,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Njf-0w-llq"/>
                                     <barButtonItem systemItem="bookmarks" id="VyM-dK-pge">
                                         <connections>
-                                            <segue destination="oJG-h6-a1d" kind="show" identifier="historial" id="hjH-ea-6PM"/>
+                                            <segue destination="oJG-h6-a1d" kind="show" identifier="" id="hjH-ea-6PM"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -120,6 +120,7 @@
                                     <barButtonItem systemItem="reply" id="C7y-FO-xJD">
                                         <connections>
                                             <action selector="salir:" destination="oJG-h6-a1d" id="Jcf-vF-qOS"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="conexionHistorial" id="w32-Gh-epY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="H35-la-4mt"/>

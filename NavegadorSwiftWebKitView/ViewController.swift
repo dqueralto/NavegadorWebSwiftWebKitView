@@ -37,10 +37,16 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))//
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
     }
+    
 
     //---------------------------------------------------------------------------------------------------------------
-    //BOTONES
+    //BOTONES Y ACCIONES
     //---------------------------------------------------------------------------------------------------------------
+    //LE INDICAMOS QUE CUANDO TOQUEMOS EN ALGUNA PARTE DE LA VISTA CIERRE EL TECLADO
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.view.endEditing(true)
+    }
     //RETROCEDEMOS A LA PAGINA ANTERIOR
     @IBAction func atras(_ sender: Any)
     {
@@ -119,9 +125,7 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
                 let myRequest = URLRequest(url: url)//HACEMOS LA SOLICITUD DE CARGA
                 webKitView.load(myRequest)//AQUI ES CUANDO LA CARGA
             }
-
-            
-            
+ 
         }
     }
     
@@ -140,10 +144,11 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         activarBotones()
     }
     
+    
     //---------------------------------------------------------------------------------------------------------------
     //FUNCIONALIDADES
     //---------------------------------------------------------------------------------------------------------------
-    
+
     func activarBotones()//HABILITAMOS O DESHABILITAMOS LOS BOTONES DE AVANCE O RETROCESO SEGÚN SE PUEDA
     {
         if webKitView.canGoForward
