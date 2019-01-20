@@ -41,6 +41,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
     {
         return historial.count
     }
+
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -55,14 +56,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         //CARGAMOS LAS CELDAS
         return celda
     }
-    /*//OBTENER EL CONTENIDO DE LA CELDA SELECCIONADA
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        let celda = self.histoTableView.cellForRow(at: indexPath)
-        let texto = (celda?.textLabel?.text)!
-        print(texto)
-        print("yeeeeeeeeeeee")
-    }*/
+
 
     
 
@@ -167,7 +161,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         
         //FINALIZAMOS LA SENTENCIA
         sqlite3_finalize(deleteStatement)
-
+        
     }
     
 

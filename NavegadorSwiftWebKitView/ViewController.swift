@@ -15,15 +15,21 @@ import WebKit
 import SQLite3
 
 
-class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate {
+class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
+
+    
     //VARIABLES PARA LA BASE DE DATOS Y LOS OBJEROS
     var db: OpaquePointer?
     var historial = [Histo]()
+    var histo: [String] = []
     //COSAS QUE USAREMOS
     @IBOutlet weak var barraDeBusqueda: UISearchBar!
     @IBOutlet weak var webKitView: WKWebView!
     @IBOutlet weak var retroceder: UIBarButtonItem!
     @IBOutlet weak var avanzar: UIBarButtonItem!
+    
+    @IBOutlet weak var histoTableViewPredic: UITableView!
+    
     
     
     //---------------------------------------------------------------------------------------------------------------
@@ -34,8 +40,9 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         // Do any additional setup after loading the view, typically from a nib.
         barraDeBusqueda.delegate = self
         webKitView.navigationDelegate = self
-        webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))//
+        webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
+        print("inicio")
     }
     
 
@@ -47,6 +54,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     {
         self.view.endEditing(true)
     }
+    
+
     //RETROCEDEMOS A LA PAGINA ANTERIOR
     @IBAction func atras(_ sender: Any)
     {
@@ -99,6 +108,9 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
             {
                 let myRequest = URLRequest(url: url)//HACEMOS LA SOLICITUD DE CARGA
                 webKitView.load(myRequest)//AQUI ES CUANDO LA CARGA
+                histo.removeAll()
+                leerValores()
+                histoTableViewPredic.reloadData()
             }
             
         }
@@ -124,6 +136,9 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
             {
                 let myRequest = URLRequest(url: url)//HACEMOS LA SOLICITUD DE CARGA
                 webKitView.load(myRequest)//AQUI ES CUANDO LA CARGA
+                histo.removeAll()
+                leerValores()
+                histoTableViewPredic.reloadData()
             }
  
         }
@@ -134,6 +149,12 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     {
         barraDeBusqueda.text = webKitView.url?.absoluteString
         insertar()
+        histo.removeAll()
+        leerValores()
+        histoTableViewPredic.reloadData()
+
+        //RECARGAMOS EL TABLEVIEW
+        //histoTableViewPredic.reloadData()
     }
     
     //CAPTURAMOS LA ACCION QUE SE HARAN ANTES QUE  EL WEBKIT VIEW EMPIECE SU TRABAJO
@@ -189,6 +210,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
                 print("error creating table: \(errmsg)")
             }
         }
+        leerValores()
+
 
     }
         
@@ -220,6 +243,84 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         print("Histo saved successfully")
         
     }
+    func leerValores(){
+        
+        //PRIMERO LIMPIAMOS LA LISTA "HISTORIAL"
+        historial.removeAll()
+        
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "SELECT * FROM Historial"
+        
+        //PUNTERO DE INSTRUCCIÓN
+        var stmt:OpaquePointer?
+        
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //RECORREMOS LOS REGISTROS
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let url = String(cString: sqlite3_column_text(stmt, 1))
+            
+            
+            //AÑADIMOS LOS VALORES A LA LISTA
+            historial.append(Histo(id: Int(id), url: String(describing: url)))
+        }
+    }
+
+    //---------------------------------------------------------------------------------------------------------------
+    //MINI HISTORIAL
+    //---------------------------------------------------------------------------------------------------------------
+    //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return historial.count
+    }
+    //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
+        let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
+        //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
+        for hi in historial{
+            histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+        }
+        //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
+        celda.textLabel?.text = histo[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
+        //CARGAMOS LAS CELDAS
+        return celda
+    }
+    
+    //OBTENER EL CONTENIDO DE LA CELDA SELECCIONADA
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        let celda = self.histoTableViewPredic.cellForRow(at: indexPath)
+        let texto = (celda?.textLabel?.text)!
+        if texto != barraDeBusqueda.text!{
+            barraDeBusqueda.text = texto
+            webKitView.load(URLRequest(url: URL(string: texto)!))
+        }
+    }
+    
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {//numberOfRowsInSection
+        
+        histoTableViewPredic.isHidden = false
+        //print("1231242769387239057273875928384")
+    }
+    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
+    {
+        histo.removeAll()
+        leerValores()
+        histoTableViewPredic.reloadData()
+        histoTableViewPredic.isHidden = true
+    }
+
+
 }
 //---------------------------------------------------------------------------------------------------------------
 //OBJETOS

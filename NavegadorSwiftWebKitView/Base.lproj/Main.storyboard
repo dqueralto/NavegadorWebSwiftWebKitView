@@ -26,15 +26,33 @@
                                 </connections>
                             </searchBar>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m5-3h-8V5">
-                                <rect key="frame" x="0.0" y="107" width="414" height="711"/>
+                                <rect key="frame" x="0.0" y="107" width="414" height="706"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qoL-3f-zFz">
+                                <rect key="frame" x="0.0" y="107" width="414" height="212"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdilla" id="hyo-8l-k37">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hyo-8l-k37" id="5EK-0l-mfN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="8pH-FP-v6W"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4ow-3Q-UjY"/>
+                                </connections>
+                            </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSd-oW-TgB">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem tag="1" systemItem="rewind" id="xnG-st-jND">
                                         <connections>
@@ -64,29 +82,34 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="65d-sp-MUa"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="bottom" secondItem="1pp-6t-9fc" secondAttribute="bottom" id="8Qk-dN-w2K"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="top" secondItem="1pp-6t-9fc" secondAttribute="top" constant="7" id="ASX-OP-N4y"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="4m5-3h-8V5" secondAttribute="bottom" id="I3v-y1-Iuz"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="PaV-fh-X9w"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="top" secondItem="KCu-Sc-UAm" secondAttribute="bottom" id="bAc-yQ-gCh"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="ca4-dt-50q"/>
-                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="fnX-0J-Bxs"/>
-                            <constraint firstItem="kSd-oW-TgB" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="oCe-qW-xXq"/>
-                            <constraint firstItem="4m5-3h-8V5" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="xLK-NS-INl"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="qoL-3f-zFz" secondAttribute="bottom" constant="494" id="261-5M-vKS"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="top" secondItem="1pp-6t-9fc" secondAttribute="top" constant="7" id="8bg-dO-Pjy"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="8pU-Qv-t9g"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="HV5-DT-hiO"/>
+                            <constraint firstItem="4m5-3h-8V5" firstAttribute="top" secondItem="KCu-Sc-UAm" secondAttribute="bottom" id="I9W-uF-XY9"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="J4x-la-ZFz"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="NiW-GW-uU4"/>
+                            <constraint firstItem="qoL-3f-zFz" firstAttribute="top" secondItem="KCu-Sc-UAm" secondAttribute="bottom" id="PiW-TQ-cFn"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="bottom" secondItem="1pp-6t-9fc" secondAttribute="bottom" id="QRs-gE-Lh4"/>
+                            <constraint firstItem="KCu-Sc-UAm" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="Rfo-W4-13q"/>
+                            <constraint firstItem="qoL-3f-zFz" firstAttribute="leading" secondItem="1pp-6t-9fc" secondAttribute="leading" id="TKh-Ga-AJM"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="4m5-3h-8V5" secondAttribute="bottom" id="j2x-eZ-wij"/>
+                            <constraint firstItem="kSd-oW-TgB" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="jrn-3J-9rB"/>
+                            <constraint firstItem="qoL-3f-zFz" firstAttribute="trailing" secondItem="1pp-6t-9fc" secondAttribute="trailing" id="tVA-Ls-guP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1pp-6t-9fc"/>
                     </view>
                     <connections>
                         <outlet property="avanzar" destination="69k-mZ-lun" id="Tbl-G7-2M8"/>
                         <outlet property="barraDeBusqueda" destination="KCu-Sc-UAm" id="IUp-DS-I0J"/>
+                        <outlet property="histoTableViewPredic" destination="qoL-3f-zFz" id="mo2-b8-3kD"/>
                         <outlet property="retroceder" destination="xnG-st-jND" id="SFP-CB-NSD"/>
                         <outlet property="webKitView" destination="4m5-3h-8V5" id="M9q-cs-7xi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.9375" y="131.8840579710145"/>
+            <point key="canvasLocation" x="134.78260869565219" y="131.25"/>
         </scene>
         <!--Segundo View Controller-->
         <scene sceneID="t9T-O7-gxg">
@@ -97,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-0a-kiY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="102.33333333333331" width="414" height="710.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celdilla" id="uh1-bG-83O">
@@ -115,7 +138,7 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w98-mm-hSD">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem systemItem="reply" id="C7y-FO-xJD">
                                         <connections>
@@ -131,16 +154,25 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dCO-mg-bFm"/>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historial" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJl-Io-Bcp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50.333333333333343"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Aru-0a-kiY" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="3lk-5P-Rf4"/>
-                            <constraint firstItem="Aru-0a-kiY" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="76L-4H-Eg1"/>
-                            <constraint firstItem="w98-mm-hSD" firstAttribute="bottom" secondItem="eRv-Zd-LCc" secondAttribute="bottom" id="QCr-gY-mn3"/>
-                            <constraint firstItem="Aru-0a-kiY" firstAttribute="top" secondItem="eRv-Zd-LCc" secondAttribute="top" id="XMU-cw-w5c"/>
-                            <constraint firstItem="w98-mm-hSD" firstAttribute="top" secondItem="Aru-0a-kiY" secondAttribute="bottom" id="eIY-oF-Fxz"/>
-                            <constraint firstItem="w98-mm-hSD" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="tGC-KL-3gf"/>
-                            <constraint firstItem="w98-mm-hSD" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="tvv-HS-xGs"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="top" secondItem="Aru-0a-kiY" secondAttribute="bottom" id="LeI-vR-r2a"/>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="V8t-UA-ZlG"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="ZNK-bw-rd7"/>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="top" secondItem="FJl-Io-Bcp" secondAttribute="bottom" constant="8" id="b3B-dO-hS1"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="bottom" secondItem="eRv-Zd-LCc" secondAttribute="bottom" id="hzh-lX-thJ"/>
+                            <constraint firstItem="Aru-0a-kiY" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="naO-eK-pzs"/>
+                            <constraint firstItem="FJl-Io-Bcp" firstAttribute="leading" secondItem="eRv-Zd-LCc" secondAttribute="leading" id="pr1-XL-hKJ"/>
+                            <constraint firstItem="w98-mm-hSD" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="qnY-BO-zZl"/>
+                            <constraint firstItem="FJl-Io-Bcp" firstAttribute="trailing" secondItem="eRv-Zd-LCc" secondAttribute="trailing" id="rbp-0D-sTM"/>
+                            <constraint firstItem="FJl-Io-Bcp" firstAttribute="top" secondItem="eRv-Zd-LCc" secondAttribute="top" id="snz-3u-ytz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eRv-Zd-LCc"/>
                     </view>
