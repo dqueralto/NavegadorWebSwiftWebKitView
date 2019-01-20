@@ -309,15 +309,15 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     
     public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
     {//numberOfRowsInSection
-        
+        histo.removeAll()
+        leerValores()
+        histoTableViewPredic.reloadData()
         histoTableViewPredic.isHidden = false
         //print("1231242769387239057273875928384")
     }
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
     {
-        histo.removeAll()
-        leerValores()
-        histoTableViewPredic.reloadData()
+
         histoTableViewPredic.isHidden = true
     }
 }
