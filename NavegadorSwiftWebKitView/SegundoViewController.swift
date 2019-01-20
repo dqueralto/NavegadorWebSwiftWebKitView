@@ -48,7 +48,7 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
         let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for hi in historial{
+        for hi in historial.reversed(){
             histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
         }
         //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION

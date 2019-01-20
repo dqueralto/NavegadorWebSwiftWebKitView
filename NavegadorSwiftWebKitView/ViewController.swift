@@ -22,6 +22,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
+    
+
     //COSAS QUE USAREMOS
     @IBOutlet weak var barraDeBusqueda: UISearchBar!
     @IBOutlet weak var webKitView: WKWebView!
@@ -42,7 +44,6 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         webKitView.navigationDelegate = self
         webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
-        print("inicio")
     }
     
 
@@ -151,10 +152,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         insertar()
         histo.removeAll()
         leerValores()
-        histoTableViewPredic.reloadData()
-
         //RECARGAMOS EL TABLEVIEW
-        //histoTableViewPredic.reloadData()
+        histoTableViewPredic.reloadData()
     }
     
     //CAPTURAMOS LA ACCION QUE SE HARAN ANTES QUE  EL WEBKIT VIEW EMPIECE SU TRABAJO
@@ -276,17 +275,19 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     //MINI HISTORIAL
     //---------------------------------------------------------------------------------------------------------------
     //INDICAMOS EL NUMERO DE FILAS QUE TENDRA NUESTRA SECCIÓN A PARTIR DEL TOTAL DE OBJETOS QUE SE HABRAN CREADO GRACIAS A NUESTRA BASE DE DATOS
+
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return historial.count
     }
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
         let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for hi in historial{
+        for hi in historial.reversed(){
             histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
         }
         //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
@@ -319,8 +320,6 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         histoTableViewPredic.reloadData()
         histoTableViewPredic.isHidden = true
     }
-
-
 }
 //---------------------------------------------------------------------------------------------------------------
 //OBJETOS
