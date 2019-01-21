@@ -45,7 +45,11 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
     }
-    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        print("1")
+    }
+
 
     //---------------------------------------------------------------------------------------------------------------
     //BOTONES Y ACCIONES

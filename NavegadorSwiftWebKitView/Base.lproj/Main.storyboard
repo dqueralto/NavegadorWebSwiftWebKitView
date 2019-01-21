@@ -80,7 +80,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kSd-oW-TgB" firstAttribute="top" secondItem="qoL-3f-zFz" secondAttribute="bottom" constant="494" id="261-5M-vKS"/>
                             <constraint firstItem="KCu-Sc-UAm" firstAttribute="top" secondItem="1pp-6t-9fc" secondAttribute="top" constant="7" id="8bg-dO-Pjy"/>
