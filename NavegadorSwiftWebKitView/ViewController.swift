@@ -15,14 +15,13 @@ import WebKit
 import SQLite3
 
 
-class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource {
-
+class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource{
     
     //VARIABLES PARA LA BASE DE DATOS Y LOS OBJEROS
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
-    
+    var filtro = [String]()
 
     //COSAS QUE USAREMOS
     @IBOutlet weak var barraDeBusqueda: UISearchBar!
@@ -45,11 +44,15 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
     }
+
+
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
+        //histo.removeAll()
+        //leerValoresFiltrados(url: self.barraDeBusqueda.text!)
+
         print("1")
     }
-
 
     //---------------------------------------------------------------------------------------------------------------
     //BOTONES Y ACCIONES
@@ -274,7 +277,37 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
             historial.append(Histo(id: Int(id), url: String(describing: url)))
         }
     }
-
+    //FORMA POCHA DE FILTRAR CON UNA CONSULTA
+    /*
+    func leerValoresFiltrados(url: String){
+        
+        //PRIMERO LIMPIAMOS LA LISTA "HISTORIAL"
+        historial.removeAll()
+        
+        //GUARDAMOS NUESTRA CONSULTA
+        let queryString = "SELECT * FROM Historial WHERE url = '"+url+"'"
+        
+        //PUNTERO DE INSTRUCCIÓN
+        var stmt:OpaquePointer?
+        
+        //PREPARACIÓN DE LA CONSULTA
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+            return
+        }
+        
+        //RECORREMOS LOS REGISTROS
+        while(sqlite3_step(stmt) == SQLITE_ROW){
+            let id = sqlite3_column_int(stmt, 0)
+            let url = String(cString: sqlite3_column_text(stmt, 1))
+            
+            
+            //AÑADIMOS LOS VALORES A LA LISTA
+            historial.append(Histo(id: Int(id), url: String(describing: url)))
+        }
+    }
+    */
     //---------------------------------------------------------------------------------------------------------------
     //MINI HISTORIAL
     //---------------------------------------------------------------------------------------------------------------
