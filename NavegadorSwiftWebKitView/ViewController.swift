@@ -322,7 +322,9 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
-        let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
+        //let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
+        let celda = histoTableViewPredic.dequeueReusableCell(withIdentifier: "celdilla",for: indexPath)
+
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
         for hi in historial.reversed(){
             histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
