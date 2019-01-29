@@ -21,7 +21,8 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
-    var filtro = [String]()
+    var filtro = [Histo]()
+    var buscando = false
 
     //COSAS QUE USAREMOS
     @IBOutlet weak var barraDeBusqueda: UISearchBar!
@@ -43,15 +44,15 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         webKitView.navigationDelegate = self
         webKitView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         crearBD()//CREAMOS O ABRIMOS(SI YA EXISTE) LA BASE DE DATOS
+        
     }
 
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        //histo.removeAll()
-        //leerValoresFiltrados(url: self.barraDeBusqueda.text!)
-
-        print("1")
+        filtro = historial.filter({$0.url!.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        buscando=true
+        histoTableViewPredic.reloadData()
     }
 
     //---------------------------------------------------------------------------------------------------------------
@@ -315,7 +316,14 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return historial.count
+        if buscando
+        {
+            return filtro.count
+        }
+        else
+        {
+            return historial.count
+        }
     }
     //IPOR CADA REGISTRO CREAMOS UNA LINEA Y LA RELLENAMOS CON LOS OBJETOS EXTRAIDOS DE LA BASE DE DATOS
     
@@ -324,15 +332,23 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         //INDICAMOS EL ESTILO DE LA CELDA Y EL IDENTIFICADOR DE ESTA
         //let celda = UITableViewCell(style: UITableViewCell.CellStyle.default,  reuseIdentifier: "celdilla")
         let celda = histoTableViewPredic.dequeueReusableCell(withIdentifier: "celdilla",for: indexPath)
-
-        //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for hi in historial.reversed(){
-            histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+        if buscando
+        {
+            celda.textLabel?.text = filtro[indexPath.row].url//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
+            return celda
         }
-        //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
-        celda.textLabel?.text = histo[indexPath.row]//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
-        //CARGAMOS LAS CELDAS
-        return celda
+        else
+        {
+            //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
+            //for hi in historial.reversed(){
+              //  histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
+            //}
+            //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
+            celda.textLabel?.text = historial[indexPath.row].url//LE INDICAMOS QUE LOS INSERTE SEGUN EL INDICE DE FILAS QUE CREAMOS EN LA FUNCION ANTERIOR CON "historial.count"
+            //CARGAMOS LAS CELDAS
+            return celda
+        }
+
     }
     
     //OBTENER EL CONTENIDO DE LA CELDA SELECCIONADA
