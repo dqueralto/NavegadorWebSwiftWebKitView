@@ -368,6 +368,7 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
         leerValores()
         histoTableViewPredic.reloadData()
         histoTableViewPredic.isHidden = false
+        barraDeBusqueda.text = "https://www."
         //print("1231242769387239057273875928384")
     }
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar)
