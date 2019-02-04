@@ -50,7 +50,8 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         let celda = tableView.dequeueReusableCell(withIdentifier: "celdilla", for: indexPath)
 
         //RECCOREMOS NUESTRA COLECCIÓN DE OBJETOS Y GUARDAMOS LA URL DE NUESTRO HISTORIAL EN UNA COLECCION DE STRINGS PARA PODER RELLENAR LAS CELDAS A CONTINUACION
-        for hi in historial.reversed(){
+        for hi in historial.reversed()
+        {
             histo.append(hi.url!)//AÑADIMOS EL ESTRING "URL" A LA NUEVA COLECCION
         }
         //RELLENAMOS LAS CELDAS CON NUESTRA NUEVA COLECCION
