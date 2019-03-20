@@ -14,7 +14,7 @@ import UIKit
 //IMPORTAMOS LAS LIBRERIAS DE LA BASE DE DATOS QUE USAREMOS
 import SQLite3
 
-class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
+class HistorialViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
@@ -26,6 +26,8 @@ class SegundoViewController: UIViewController, UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         
         conectarDB()
+        
+        
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {

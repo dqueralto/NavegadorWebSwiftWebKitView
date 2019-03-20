@@ -15,7 +15,7 @@ import WebKit
 import SQLite3
 
 
-class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource{
+class NavegadorViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNavigationDelegate, UITableViewDelegate, UITableViewDataSource{
     
     //VARIABLES PARA LA BASE DE DATOS Y LOS OBJEROS
     var db: OpaquePointer?
@@ -277,6 +277,7 @@ class ViewController: UIViewController, WKUIDelegate, UISearchBarDelegate, WKNav
             //AÑADIMOS LOS VALORES A LA LISTA
             historial.append(Histo(id: Int(id), url: String(describing: url)))
         }
+        
     }
     //FORMA POCHA DE FILTRAR CON UNA CONSULTA
     /*
