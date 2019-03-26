@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navegador View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NavegadorSwiftWebKitView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NavegadorViewController" customModule="NavegadorSwiftWebKitView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s2U-i4-OrR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="134.78260869565219" y="131.25"/>
         </scene>
-        <!--Segundo View Controller-->
+        <!--Historial View Controller-->
         <scene sceneID="t9T-O7-gxg">
             <objects>
-                <viewController id="oJG-h6-a1d" customClass="SegundoViewController" customModule="NavegadorSwiftWebKitView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oJG-h6-a1d" customClass="HistorialViewController" customModule="NavegadorSwiftWebKitView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZWB-Bq-jvy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,13 +142,13 @@
                                 <items>
                                     <barButtonItem systemItem="reply" id="C7y-FO-xJD">
                                         <connections>
-                                            <action selector="salir:" destination="oJG-h6-a1d" id="Jcf-vF-qOS"/>
+                                            <action selector="salir:" destination="oJG-h6-a1d" id="crZ-4m-hAi"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="H35-la-4mt"/>
                                     <barButtonItem tag="4" systemItem="trash" id="1CN-RY-lte">
                                         <connections>
-                                            <action selector="eliminar:" destination="oJG-h6-a1d" id="mMP-GO-gw5"/>
+                                            <action selector="eliminar:" destination="oJG-h6-a1d" id="nhR-g8-Y69"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dCO-mg-bFm"/>
@@ -177,7 +177,7 @@
                         <viewLayoutGuide key="safeArea" id="eRv-Zd-LCc"/>
                     </view>
                     <connections>
-                        <outlet property="histoTableView" destination="Aru-0a-kiY" id="3LL-Jt-OQq"/>
+                        <outlet property="histoTableView" destination="Aru-0a-kiY" id="DsC-aK-EOf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPd-U4-BFj" userLabel="First Responder" sceneMemberID="firstResponder"/>

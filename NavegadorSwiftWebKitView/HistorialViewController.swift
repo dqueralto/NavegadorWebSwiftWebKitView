@@ -18,6 +18,7 @@ class HistorialViewController: UIViewController, UITableViewDelegate,UITableView
     var db: OpaquePointer?
     var historial = [Histo]()
     var histo: [String] = []
+
     
 
     @IBOutlet weak var histoTableView: UITableView!
@@ -69,13 +70,13 @@ class HistorialViewController: UIViewController, UITableViewDelegate,UITableView
     //BOTONES
     //---------------------------------------------------------------------------------------------------------------
 
-    
     @IBAction func salir(_ sender: Any)
     {
         self.dismiss(animated: true, completion: nil)
     }
-
-    @IBAction func eliminar(_ sender: Any) {
+    
+    @IBAction func eliminar(_ sender: Any)
+    {
         //ELIMINAMOOS TODOS LOS REGISTROS DE LA BASE DE DATOS
         eliminarHistorial()
         //VOLVEMOS A MIRAR SI HAY DATOS EN LA BASE DE DATOS
@@ -83,6 +84,9 @@ class HistorialViewController: UIViewController, UITableViewDelegate,UITableView
         //RECARGAMOS EL TABLEVIEW
         histoTableView.reloadData()
     }
+    
+
+
     
 
     //---------------------------------------------------------------------------------------------------------------
